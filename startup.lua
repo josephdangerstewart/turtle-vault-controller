@@ -1,6 +1,6 @@
-local NetworkManager = dofile("network-manager.lua")
-local MenuManager = dofile("menu-manager.lua")
-local UiManager = dofile("ui-manager.lua")
+local NetworkManager = dofile("vault-controller/network-manager.lua")
+local MenuManager = dofile("vault-controller/menu-manager.lua")
+local UiManager = dofile("vault-controller/ui-manager.lua")
 
 local defaultProfileModel = {
 	globalIndex = {}
