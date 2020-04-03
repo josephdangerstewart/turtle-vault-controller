@@ -3,7 +3,7 @@
 	author = "PossieTV",
 	files = {
 		"/vault%-controller/.*",
-		"/startup.lua"
+		"/startup.lua",
 	},
 	githubUserName = "josephdangerstewart",
 	githubRepository = "turtle-vault-controller"
