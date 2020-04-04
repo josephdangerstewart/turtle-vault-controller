@@ -56,6 +56,12 @@ local function updateOutputsForVault(id, outputs)
 	pFile.close()
 end
 
+local function refreshIndex()
+	for i,v in pairs(profile.globalIndex) do
+		networkManager:getIndexUpdate(i)
+	end
+end
+
 networkManager = NetworkManager.new(profile, registerTurtle, updateIndexForTurtle)
 local menuManager = MenuManager.new()
 local uiManager = UiManager.new(getGlobalIndex, menuManager, MenuManager.itemTypes, networkManager, updateOutputsForVault)
@@ -86,6 +92,14 @@ local mainMenu = {
 			end
 		},
 		{
+			text = "Refresh index",
+			type = MenuManager.itemTypes.custom,
+			action = function()
+				refreshIndex()
+			end
+				
+		},
+		{
 			text = "List vaults",
 			type = MenuManager.itemTypes.custom,
 			action = function()
@@ -104,6 +118,8 @@ local function networkLoop()
 end
 
 local function displayLoop()
+	refreshIndex()
+
 	while true do
 		menuManager:display("main")
 	end

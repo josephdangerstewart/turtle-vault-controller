@@ -24,6 +24,7 @@ function NetworkManager.new(profile, registerTurtle, updateIndexForTurtle)
 
 	for i,v in pairs(profile.globalIndex) do
 		self.turtlePollingMap[i] = true
+		self.messageQueue[i] = {}
 	end
 
 	return self
@@ -47,6 +48,10 @@ function NetworkManager:listen()
 	elseif command == "index" then
 		self.updateIndexForTurtle(id, data.index)
 	end
+end
+
+function NetworkManager:getIndexUpdate(id)
+	self:send(id, { command = "do-index" })
 end
 
 function NetworkManager:setPolling(id, value)
